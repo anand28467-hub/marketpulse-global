@@ -1,0 +1,2 @@
+# marketpulse-global
+FOR LATEST GLOBAL AND FINANCIAL MARKET NEWS
