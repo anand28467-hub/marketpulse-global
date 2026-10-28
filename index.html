@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarketPulse Global | Financial Intelligence</title>
+<meta name="description" content="Global financial markets, live charts, crypto prices and business news in one dashboard.">
+<style>
+:root {
+  --bg:#080d17; --panel:#101827; --line:#233047;
+  --text:#eef3fb; --muted:#91a0b7;
+  --green:#36d399; --blue:#60a5fa;
+}
+* {box-sizing:border-box}
+body {
+  margin:0; background:var(--bg); color:var(--text);
+  font:14px/1.6 Inter,system-ui,-apple-system,sans-serif;
+}
+a {color:inherit;text-decoration:none}
+header {
+  border-bottom:1px solid var(--line); padding:17px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;background:#0b1220;
+}
+.brand {font-size:21px;font-weight:800;letter-spacing:-.7px}
+.brand span {color:var(--green)}
+nav {display:flex;gap:20px;flex-wrap:wrap;color:var(--muted)}
+nav a:hover {color:white}
+.live {color:var(--green);font-size:12px}
+.container {max-width:1440px;margin:auto;padding:28px 5% 60px}
+.eyebrow {color:var(--green);font-size:11px;font-weight:800;letter-spacing:2px}
+h1 {font-size:clamp(30px,4vw,48px);line-height:1.12;margin:10px 0}
+h1 span {color:var(--green)}
+.intro {color:var(--muted);max-width:650px;margin-bottom:28px}
+.section-title {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin:28px 0 14px
+}
+h2 {font-size:18px;margin:0}
+.tag {font-size:11px;color:var(--green);border:1px solid #235b4b;
+  border-radius:20px;padding:4px 9px}
+.grid {display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.panel {background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:18px;min-width:0}
+.span-12 {grid-column:span 12}
+.span-8 {grid-column:span 8}
+.span-4 {grid-column:span 4}
+.widget {height:430px;overflow:hidden}
+.widget.small {height:390px}
+.widget.news {height:650px}
+.widget > div {height:100%;width:100%}
+.disclaimer {font-size:11px;color:var(--muted);margin-top:18px}
+footer {border-top:1px solid var(--line);padding:25px 5%;
+  color:var(--muted);font-size:12px}
+.search {
+  background:var(--panel);border:1px solid var(--line);color:white;
+  border-radius:8px;padding:10px 12px;width:100%;max-width:280px
+}
+.marketbar {margin:18px 0;border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;background:var(--panel)}
+@media(max-width:850px) {
+  .span-8,.span-4 {grid-column:span 12}
+  .widget {height:380px}
+  .widget.news {height:600px}
+  nav {gap:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#">MARKET<span>PULSE</span></a>
+  <nav>
+    <a href="#markets">Markets</a>
+    <a href="#charts">Charts</a>
+    <a href="#news">World News</a>
+    <a href="#crypto">Crypto</a>
+  </nav>
+  <div class="live">● LIVE DATA WIDGETS</div>
+</header>
+
+<main class="container">
+  <div class="eyebrow">YOUR WORLD. YOUR MARKETS.</div>
+  <h1>See the world<br>through <span>the markets.</span></h1>
+  <p class="intro">
+    Global market movements, interactive charts, digital assets and
+    financial headlines — all in one place.
+  </p>
+
+  <div class="marketbar">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+      async>
+      {
+        "symbols": [
+          {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+          {"proName":"NASDAQ:NDX","title":"Nasdaq 100"},
+          {"proName":"INDEX:NKY","title":"Nikkei 225"},
+          {"proName":"BSE:SENSEX","title":"Sensex"},
+          {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
+          {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+          {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},
+          {"proName":"TVC:GOLD","title":"Gold"}
+        ],
+        "showSymbolLogo":true,
+        "colorTheme":"dark",
+        "isTransparent":true,
+        "displayMode":"adaptive",
+        "locale":"en"
+      }
+      </script>
+    </div>
+  </div>
+
+  <section id="markets">
+    <div class="section-title">
+      <h2>Global Market Overview</h2><span class="tag">MARKET DATA</span>
+    </div>
+    <div class="grid">
+      <div class="panel span-12 widget">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+          async>
+          {
+            "colorTheme":"dark",
+            "dateRange":"1D",
+            "showChart":true,
+            "locale":"en",
+            "isTransparent":true,
+            "showSymbolLogo":true,
+            "showFloatingTooltip":false,
+            "width":"100%",
+            "height":"100%",
+            "tabs":[
+              {"title":"Indices","symbols":[
+                {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
+                {"s":"NASDAQ:NDX","d":"Nasdaq 100"},
+                {"s":"DJ:DJI","d":"Dow Jones"},
+                {"s":"BSE:SENSEX","d":"Sensex"},
+                {"s":"NSE:NIFTY","d":"Nifty 50"}
+              ]},
+              {"title":"Forex","symbols":[
+                {"s":"FX:EURUSD","d":"EUR/USD"},
+                {"s":"FX:GBPUSD","d":"GBP/USD"},
+                {"s":"FX:USDJPY","d":"USD/JPY"}
+              ]},
+              {"title":"Crypto","symbols":[
+                {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},
+                {"s":"BITSTAMP:ETHUSD","d":"Ethereum"}
+              ]},
+              {"title":"Commodities","symbols":[
+                {"s":"TVC:GOLD","d":"Gold"},
+                {"s":"TVC:SILVER","d":"Silver"},
+                {"s":"NYMEX:CL1!","d":"Crude Oil"}
+              ]}
+            ]
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="charts">
+    <div class="section-title">
+      <h2>Market Chart</h2><span class="tag">INTERACTIVE</span>
+    </div>
+    <div class="grid">
+      <div class="panel span-8 widget">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+          async>
+          {
+            "autosize":true,
+            "symbol":"NASDAQ:AAPL",
+            "interval":"D",
+            "timezone":"Etc/UTC",
+            "theme":"dark",
+            "style":"1",
+            "locale":"en",
+            "allow_symbol_change":true,
+            "calendar":false,
+            "support_host":"https://www.tradingview.com"
+          }
+          </script>
+        </div>
+      </div>
+      <div class="panel span-4 widget small" id="crypto">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
+          async>
+          {
+            "width":"100%",
+            "height":"100%",
+            "symbolsGroups":[
+              {"name":"Crypto","symbols":[
+                {"name":"BITSTAMP:BTCUSD","displayName":"Bitcoin"},
+                {"name":"BITSTAMP:ETHUSD","displayName":"Ethereum"},
+                {"name":"BINANCE:SOLUSDT","displayName":"Solana"},
+                {"name":"BINANCE:XRPUSDT","displayName":"XRP"}
+              ]}
+            ],
+            "showSymbolLogo":true,
+            "colorTheme":"dark",
+            "isTransparent":true,
+            "locale":"en"
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="section-title">
+      <h2>Financial News & Headlines</h2>
+      <span class="tag">NEWS FEED</span>
+    </div>
+    <div class="grid">
+      <div class="panel span-8 widget news">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
+          async>
+          {
+            "feedMode":"market",
+            "market":"stock",
+            "isTransparent":true,
+            "displayMode":"regular",
+            "width":"100%",
+            "height":"100%",
+            "colorTheme":"dark",
+            "locale":"en"
+          }
+          </script>
+        </div>
+      </div>
+      <div class="panel span-4 widget news">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
+          async>
+          {
+            "feedMode":"all",
+            "isTransparent":true,
+            "displayMode":"compact",
+            "width":"100%",
+            "height":"100%",
+            "colorTheme":"dark",
+            "locale":"en"
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Market prices, quotes and headlines are supplied by third-party
+      services. Availability, refresh frequency, exchange coverage and
+      delays depend on the provider. This site is for information only,
+      not investment advice.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="brand">MARKET<span>PULSE</span> GLOBAL</div>
+  <p>Global finance. One perspective.</p>
+  <p>Market data and news are provided by TradingView and its data partners.
+  All trademarks belong to their respective owners.</p>
+  <p>© <span id="year"></span> MarketPulse Global</p>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
