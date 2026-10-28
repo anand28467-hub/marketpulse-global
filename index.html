@@ -3,6 +3,407 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="MarketPulse Global — global financial markets, Indian stocks, interactive charts and financial news.">
+<title>MarketPulse Global | Financial Intelligence</title>
+<link rel="preconnect" href="https://s3.tradingview.com">
+<style>
+:root {
+  --bg:#080d18;--surface:#101827;--surface2:#151f30;
+  --border:#253249;--text:#f0f5ff;--muted:#9aa9bf;
+  --green:#43e0ac;--blue:#81aaff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);
+font:14px/1.65 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+header{position:sticky;top:0;z-index:10;background:#0a101deb;
+backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{max-width:1440px;margin:auto;padding:15px 5%;
+display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;font-size:20px;letter-spacing:-.8px;white-space:nowrap}
+.logo span{color:var(--green)}
+nav{display:flex;gap:19px;flex-wrap:wrap}
+nav a{color:var(--muted);font-size:13px}
+nav a:hover{color:var(--green)}
+.status{font-size:11px;color:var(--green);white-space:nowrap}
+main{max-width:1440px;margin:auto;padding:32px 5% 65px}
+.hero{padding:28px 0 22px}
+.kicker{color:var(--green);font-size:11px;font-weight:800;
+letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(35px,6vw,66px);line-height:1.05;
+letter-spacing:-2px;margin:14px 0}
+h1 span{color:var(--green)}
+.hero p{color:var(--muted);max-width:650px;font-size:15px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;padding:10px 15px;border-radius:9px;
+border:1px solid var(--border);background:var(--surface);font-weight:650}
+.btn.primary{background:var(--green);color:#07150f;border-color:var(--green)}
+.ticker{border:1px solid var(--border);border-radius:12px;
+overflow:hidden;background:var(--surface);margin:12px 0 28px}
+.section{margin-top:34px}
+.section-head{display:flex;align-items:center;justify-content:space-between;
+gap:12px;margin-bottom:14px}
+h2{font-size:20px;letter-spacing:-.5px;margin:0}
+h3{font-size:15px;margin:0}
+.sub{font-size:12px;color:var(--muted);margin:4px 0 0}
+.pill{font-size:10px;border:1px solid #28634f;color:var(--green);
+border-radius:20px;padding:4px 9px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:15px}
+.card{min-width:0;background:var(--surface);border:1px solid var(--border);
+border-radius:14px;padding:17px;overflow:hidden}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}
+.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
+.widget{width:100%;min-width:0}
+.h-ticker{height:55px}.h-overview{height:490px}
+.h-chart{height:510px}.h-small{height:440px}
+.h-news{height:640px}.h-calendar{height:650px}
+.tvframe{width:100%;height:100%;min-width:0}
+.market-label{display:flex;justify-content:space-between;align-items:center;
+margin-bottom:13px;gap:10px}
+.market-label span{font-size:11px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin:14px 0 0}
+.quicklinks{display:flex;flex-wrap:wrap;gap:8px}
+.quicklinks a{padding:7px 11px;background:var(--surface2);
+border:1px solid var(--border);border-radius:8px;font-size:12px}
+.quicklinks a:hover{border-color:var(--green)}
+footer{border-top:1px solid var(--border);padding:25px 5%;
+color:var(--muted);font-size:12px}
+.footer-inner{max-width:1300px;margin:auto}
+footer p{max-width:850px}
+@media(max-width:850px){
+ .nav{flex-wrap:wrap}
+ nav{order:3;width:100%;gap:15px}
+ .c8,.c7,.c6,.c5,.c4{grid-column:span 12}
+ .h-overview{height:520px}.h-chart{height:450px}
+ .h-small{height:420px}.h-news{height:620px}
+}
+@media(max-width:480px){
+ main{padding:20px 4% 45px}
+ .nav{padding:12px 4%}
+ h1{letter-spacing:-1.3px}
+ .status{font-size:10px}
+ .card{padding:12px}
+ .h-chart{height:400px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="nav">
+  <a class="logo" href="#">MARKET<span>PULSE</span></a>
+  <nav aria-label="Main navigation">
+   <a href="#overview">Markets</a>
+   <a href="#india">India</a>
+   <a href="#charts">Charts</a>
+   <a href="#news">News</a>
+   <a href="#calendar">Calendar</a>
+  </nav>
+  <div class="status">● MARKET DATA</div>
+ </div>
+</header>
+
+<main>
+ <section class="hero">
+  <div class="kicker">Global financial intelligence</div>
+  <h1>Understand markets.<br><span>See the bigger picture.</span></h1>
+  <p>Explore global indices, Indian equities, currencies, commodities,
+  cryptocurrencies, financial headlines and economic events in one place.</p>
+  <div class="hero-actions">
+   <a class="btn primary" href="#overview">Explore markets ↗</a>
+   <a class="btn" href="#news">Latest headlines</a>
+  </div>
+ </section>
+
+ <div class="ticker">
+  <div class="tradingview-widget-container h-ticker">
+   <div class="tradingview-widget-container__widget"></div>
+   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+   {
+    "symbols":[
+     {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+     {"proName":"NASDAQ:NDX","title":"Nasdaq 100"},
+     {"proName":"NSE:NIFTY","title":"NIFTY 50"},
+     {"proName":"BSE:SENSEX","title":"SENSEX"},
+     {"proName":"FX_IDC:USDINR","title":"USD/INR"},
+     {"proName":"TVC:GOLD","title":"Gold"},
+     {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"}
+    ],
+    "showSymbolLogo":true,"isTransparent":true,
+    "displayMode":"adaptive","colorTheme":"dark","locale":"en"
+   }
+   </script>
+  </div>
+ </div>
+
+ <section class="section" id="overview">
+  <div class="section-head">
+   <div><h2>Global market overview</h2>
+   <p class="sub">Indices, forex, commodities and digital assets</p></div>
+   <span class="pill">LIVE WIDGET</span>
+  </div>
+  <div class="card h-overview">
+   <div class="tradingview-widget-container tvframe">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+    {
+     "colorTheme":"dark","dateRange":"1D","showChart":true,
+     "locale":"en","isTransparent":true,"showSymbolLogo":true,
+     "width":"100%","height":"100%",
+     "tabs":[
+      {"title":"Indices","symbols":[
+       {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
+       {"s":"NASDAQ:NDX","d":"Nasdaq 100"},
+       {"s":"DJ:DJI","d":"Dow Jones"},
+       {"s":"NSE:NIFTY","d":"NIFTY 50"},
+       {"s":"BSE:SENSEX","d":"SENSEX"}
+      ]},
+      {"title":"Forex","symbols":[
+       {"s":"FX_IDC:EURUSD","d":"EUR/USD"},
+       {"s":"FX_IDC:GBPUSD","d":"GBP/USD"},
+       {"s":"FX_IDC:USDINR","d":"USD/INR"},
+       {"s":"FX_IDC:USDJPY","d":"USD/JPY"}
+      ]},
+      {"title":"Commodities","symbols":[
+       {"s":"TVC:GOLD","d":"Gold"},
+       {"s":"TVC:SILVER","d":"Silver"},
+       {"s":"NYMEX:CL1!","d":"WTI Crude Oil"}
+      ]},
+      {"title":"Crypto","symbols":[
+       {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},
+       {"s":"BITSTAMP:ETHUSD","d":"Ethereum"},
+       {"s":"BINANCE:SOLUSDT","d":"Solana"}
+      ]}
+     ]
+    }
+    </script>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" id="india">
+  <div class="section-head">
+   <div><h2>India market watch</h2>
+   <p class="sub">Indian benchmarks and leading listed companies</p></div>
+   <span class="pill">INDIA</span>
+  </div>
+  <div class="grid">
+   <div class="card c6">
+    <div class="market-label"><h3>NIFTY 50</h3><span>National Stock Exchange</span></div>
+    <div class="tradingview-widget-container h-small">
+     <div class="tradingview-widget-container__widget"></div>
+     <script src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+     {
+      "symbols":[["NIFTY 50","NSE:NIFTY|1D"]],
+      "chartOnly":false,"width":"100%","height":"100%",
+      "locale":"en","colorTheme":"dark","isTransparent":true,
+      "autosize":true,"showVolume":false,"showMA":false,
+      "hideDateRanges":false,"hideMarketStatus":false,
+      "hideSymbolLogo":false,"scalePosition":"right",
+      "scaleMode":"Normal","fontFamily":"system-ui",
+      "fontSize":"10","noTimeScale":false,"valuesTracking":"1",
+      "changeMode":"price-and-percent","chartType":"area",
+      "lineWidth":2,"lineType":0
+     }
+     </script>
+    </div>
+   </div>
+   <div class="card c6">
+    <div class="market-label"><h3>SENSEX</h3><span>BSE</span></div>
+    <div class="tradingview-widget-container h-small">
+     <div class="tradingview-widget-container__widget"></div>
+     <script src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+     {
+      "symbols":[["SENSEX","BSE:SENSEX|1D"]],
+      "chartOnly":false,"width":"100%","height":"100%",
+      "locale":"en","colorTheme":"dark","isTransparent":true,
+      "autosize":true,"showVolume":false,"showMA":false,
+      "hideDateRanges":false,"hideMarketStatus":false,
+      "hideSymbolLogo":false,"scalePosition":"right",
+      "scaleMode":"Normal","fontFamily":"system-ui",
+      "fontSize":"10","noTimeScale":false,"valuesTracking":"1",
+      "changeMode":"price-and-percent","chartType":"area",
+      "lineWidth":2,"lineType":0
+     }
+     </script>
+    </div>
+   </div>
+   <div class="card c12">
+    <div class="market-label"><h3>Indian stock screener</h3>
+    <span>Explore listed companies</span></div>
+    <div class="tradingview-widget-container h-overview">
+     <div class="tradingview-widget-container__widget"></div>
+     <script src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+     {
+      "market":"india","showToolbar":true,"defaultColumn":"overview",
+      "defaultScreen":"most_capitalized","isTransparent":true,
+      "displayCurrency":"INR","colorTheme":"dark","locale":"en",
+      "width":"100%","height":"100%"
+     }
+     </script>
+    </div>
+    <p class="note">If the India screener is unavailable in your region,
+    use the individual stock chart below or open the provider's website.</p>
+   </div>
+   <div class="card c12">
+    <div class="market-label"><h3>Popular Indian shares</h3>
+    <span>Switch symbols in the chart</span></div>
+    <div class="quicklinks">
+     <a href="#charts" data-symbol="NSE:RELIANCE">Reliance</a>
+     <a href="#charts" data-symbol="NSE:TCS">TCS</a>
+     <a href="#charts" data-symbol="NSE:HDFCBANK">HDFC Bank</a>
+     <a href="#charts" data-symbol="NSE:INFY">Infosys</a>
+     <a href="#charts" data-symbol="NSE:ICICIBANK">ICICI Bank</a>
+     <a href="#charts" data-symbol="NSE:SBIN">SBI</a>
+     <a href="#charts" data-symbol="NSE:BHARTIARTL">Bharti Airtel</a>
+     <a href="#charts" data-symbol="NSE:ITC">ITC</a>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" id="charts">
+  <div class="section-head">
+   <div><h2>Interactive chart studio</h2>
+   <p class="sub">Search symbols, change intervals and use chart tools</p></div>
+   <span class="pill">INTERACTIVE</span>
+  </div>
+  <div class="card">
+   <div class="quicklinks" style="margin-bottom:14px">
+    <button class="btn" data-symbol="NASDAQ:AAPL">Apple</button>
+    <button class="btn" data-symbol="NASDAQ:NVDA">NVIDIA</button>
+    <button class="btn" data-symbol="NSE:NIFTY">NIFTY 50</button>
+    <button class="btn" data-symbol="BSE:SENSEX">SENSEX</button>
+    <button class="btn" data-symbol="BITSTAMP:BTCUSD">Bitcoin</button>
+    <button class="btn" data-symbol="TVC:GOLD">Gold</button>
+   </div>
+   <div class="tradingview-widget-container h-chart">
+    <div class="tradingview-widget-container__widget"></div>
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+    {
+     "autosize":true,"symbol":"NSE:NIFTY","interval":"D",
+     "timezone":"Asia/Kolkata","theme":"dark","style":"1",
+     "locale":"en","allow_symbol_change":true,
+     "calendar":false,"support_host":"https://www.tradingview.com"
+    }
+    </script>
+   </div>
+   <p class="note">The symbol buttons below the chart open the chosen instrument
+   in TradingView. Use the chart's own symbol search to change instruments.</p>
+  </div>
+ </section>
+
+ <section class="section" id="news">
+  <div class="section-head">
+   <div><h2>Global financial news</h2>
+   <p class="sub">Market headlines and business stories</p></div>
+   <span class="pill">NEWS FEED</span>
+  </div>
+  <div class="grid">
+   <div class="card c7 h-news">
+    <div class="market-label"><h3>Market news</h3><span>Global</span></div>
+    <div class="tradingview-widget-container tvframe">
+     <div class="tradingview-widget-container__widget"></div>
+     <script src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+     {
+      "feedMode":"market","market":"stock",
+      "isTransparent":true,"displayMode":"regular",
+      "width":"100%","height":"100%","colorTheme":"dark","locale":"en"
+     }
+     </script>
+    </div>
+   </div>
+   <div class="card c5 h-news">
+    <div class="market-label"><h3>World headlines</h3><span>All markets</span></div>
+    <div class="tradingview-widget-container tvframe">
+     <div class="tradingview-widget-container__widget"></div>
+     <script src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+     {
+      "feedMode":"all","isTransparent":true,
+      "displayMode":"compact","width":"100%","height":"100%",
+      "colorTheme":"dark","locale":"en"
+     }
+     </script>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" id="calendar">
+  <div class="section-head">
+   <div><h2>Economic calendar</h2>
+   <p class="sub">Economic releases, central-bank decisions and indicators</p></div>
+   <span class="pill">MACRO WATCH</span>
+  </div>
+  <div class="card h-calendar">
+   <div class="tradingview-widget-container tvframe">
+    <div class="tradingview-widget-container__widget"></div>
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+    {
+     "colorTheme":"dark","isTransparent":true,
+     "width":"100%","height":"100%","locale":"en",
+     "importanceFilter":"0,1","currencyFilter":"USD,EUR,GBP,JPY,INR"
+    }
+    </script>
+   </div>
+  </div>
+  <p class="note">Calendar event coverage and currency filters depend on the provider.
+  Confirm important event times against official sources.</p>
+ </section>
+
+ <section class="section">
+  <div class="card">
+   <div class="kicker">MarketPulse Global</div>
+   <h2 style="margin-top:8px">Stay informed. Think globally.</h2>
+   <p class="sub">A financial information dashboard for market enthusiasts.
+   Not investment advice or a trading recommendation.</p>
+   <div class="quicklinks" style="margin-top:15px">
+    <a href="https://www.tradingview.com/markets/">Explore markets ↗</a>
+    <a href="https://www.rbi.org.in/">Reserve Bank of India ↗</a>
+    <a href="https://www.nseindia.com/">NSE India ↗</a>
+    <a href="https://www.bseindia.com/">BSE India ↗</a>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <div class="footer-inner">
+  <a class="logo" href="#">MARKET<span>PULSE</span> GLOBAL</a>
+  <p>Financial market information is supplied by third-party providers.
+  Prices may be delayed, unavailable or subject to exchange licensing.
+  Always verify important information before making financial decisions.</p>
+  <p>TradingView and exchange names and trademarks belong to their respective owners.</p>
+  <p>© <span id="year"></span> MarketPulse Global</p>
+ </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Quick symbol shortcuts: open the selected chart on TradingView. */
+document.querySelectorAll("[data-symbol]").forEach(function(button){
+ button.addEventListener("click",function(event){
+  event.preventDefault();
+  var symbol=button.getAttribute("data-symbol");
+  window.open(
+   "https://www.tradingview.com/chart/?symbol="+encodeURIComponent(symbol),
+   "_blank","noopener"
+  );
+ });
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MarketPulse Global | Financial Intelligence</title>
 <meta name="description" content="Global financial markets, live charts, crypto prices and business news in one dashboard.">
